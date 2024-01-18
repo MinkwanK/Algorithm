@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+
+    static int N;
+    static int K;
+    static int ans;
+    static boolean[] selected;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        N =  sc.nextInt();
+        K = sc.nextInt();
+        ans=0;
+        selected = new boolean[N];
+        comb(0,0);
+        System.out.println(ans%10007);
+    }
+
+    static void comb(int cnt, int start){
+        if (cnt == K){
+
+            ans++;
+            return;
+        }
+
+        for(int i = start; i < N; i++){
+
+            selected[cnt] = true;
+            comb(cnt+1,i+1);
+            selected[cnt] = false;
+        }
+    }
+}
